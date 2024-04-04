@@ -4,6 +4,9 @@ Stream the Raspberry Pi libcamera2 as an MJPEG stream via http
 ## Setup
 
 ```bash
+# Install git
+sudo apt install git
+
 # Clone repository
 git clone https://github.com/MarcelBruckner/Pi-Mjpeg-Streaming-Server.git
 cd Pi-Mjpeg-Streaming-Server
