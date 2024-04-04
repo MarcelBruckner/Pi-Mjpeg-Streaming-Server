@@ -3,17 +3,25 @@ Stream the Raspberry Pi libcamera2 as an MJPEG stream via http
 
 ## Setup
 
-1. Clone repository via `git clone https://github.com/MarcelBruckner/Pi-Mjpeg-Streaming-Server.git`
-2. `cd Pi-Mjpeg-Streaming-Server`
-3. Edit `server.service` and adjust the `/home/pi/Pi-Mjpeg-Streaming-Server/server.py`. This has to be the absolute path to the `server.py` file. While in the repository folder, run `pwd` to quickly get the absolute path.
-4. Install the libcamera dependency: `sudo apt install -y python3-picamera2 --no-install-recommends` 
-5. Enable the service:
-   ```bash
-   sudo ln -s $PWD/server.service /etc/systemd/system/
-   
-   sudo systemctl daemon-reload
-   sudo systemctl enable --now server.service
-   ```
+```bash
+# Clone repository
+git clone https://github.com/MarcelBruckner/Pi-Mjpeg-Streaming-Server.git
+cd Pi-Mjpeg-Streaming-Server
+
+# If you clone the repository in /home/pi then you can skip this step
+# If you clone it to another path adjust `ExecStart=/usr/bin/python3 YOUR/PATH/Pi-Mjpeg-Streaming-Server/server.py`
+nano server.service
+
+# Install libcamera dependencies
+sudo apt install -y python3-picamera2 --no-install-recommends
+
+# Make the service available to systemd
+sudo ln -s $PWD/server.service /etc/systemd/system/
+sudo systemctl daemon-reload
+
+# Enable and start the service
+sudo systemctl enable --now server.service
+```
 
 ## Access
 
